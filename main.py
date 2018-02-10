@@ -26,6 +26,6 @@ def upload():
         print(destination)
         file.save(destination)
 
-    return render_template("index.html")
+    return render_template("caption.html")
 
 
