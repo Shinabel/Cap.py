@@ -48,14 +48,6 @@ def upload():
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
-    @app.after_request
-    def remove_file(response):
-        try:
-            os.remove(destination)
-            file_handle.close()
-        except Exception as error:
-            app.logger.error("Error removing or closing downloaded file handle", error)
-        return response
     return render_template("caption.html", quotes = quotes, image = filename)
 
 def googlecloud(destination):
