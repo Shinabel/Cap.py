@@ -16,17 +16,41 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
 </head>
 
 <body class="bg">
     <div class="container page-title">
-        <h1>Instagram Caption Generator 🐶</h1>
+        <h1>Your Caption 🐶</h1>
     </div>
 
-    <div class="container" id="btn-row">
-        <button type="button" class="btn btn-outline-light btn-lg" id="upload-btn">Upload a photo</button>
+    <img/>
+
+    <!-- Target -->
+    <div class="container">
+        <div class="form-group">
+            <textarea class="form-control" rows="5" id="caption">Example caption #dog #carrots #instadaily
+            </textarea>
+        </div>
     </div>
 
+    <!-- Trigger -->
+    <div class="container btn-row">
+        <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
+            Copy
+        </button>
+        <button class="btn btn-outline-light" id="regenerate-btn">
+            Regenerate
+        </button>
+    </div>
+
+    <script>
+        (function () {
+            new Clipboard('#copy-caption');
+        })();
+    </script>
 </body>
 
 </html>
