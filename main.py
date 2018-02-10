@@ -1,6 +1,12 @@
 import os
 import io
+#
 import requests
+import time
+import giphy_client
+from giphy_client.rest import ApiException
+from pprint import pprint
+#
 from bs4 import BeautifulSoup
 from google.cloud import vision
 from flask import Flask, request, render_template, send_from_directory
@@ -8,6 +14,9 @@ from flask import Flask, request, render_template, send_from_directory
 app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+api_instance = giphy_client.DefaultApi()
+api_key = 'dc6zaTOxFJmzC'
 
 @app.route("/")
 def index():
@@ -28,6 +37,9 @@ def upload():
         print(destination)
         file.save(destination)
     labels = googlecloud(destination)
+    #######
+    memeSearch(labels[0].description)
+    #######
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
@@ -59,3 +71,14 @@ def getQuotes(keyword):
         quoteArray.append(item.get_text().rstrip())
 
     return quoteArray
+
+def memeSearch(text):
+    key = text
+    limit = 1
+
+    try: 
+    # Search Endpoint
+        api_response = api_instance.gifs_search_get(api_key, key, limit=limit)
+        print(api_response.data[0].embed_url)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)

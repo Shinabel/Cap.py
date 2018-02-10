@@ -12,3 +12,6 @@ Install Google Cloud:
 
 Install BeatifulSoup 4:
 > sudo pip install bs4
+
+Install Giphy:
+  sudo pip install giphy_client
