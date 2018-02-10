@@ -1,3 +1,4 @@
 *.pyc
 
-images/*
+static/*.jpg
+static/*.png
