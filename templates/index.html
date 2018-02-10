@@ -16,6 +16,21 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(
+        function() {
+            $("input:file").change(
+                function() {
+                    if ($(this).val()) {
+                        $('input:submit').removeAttr('disabled');
+                    }
+                }
+                );
+        });
+    </script>
+    
 </head>
 
 <body class="bg">
@@ -28,9 +43,11 @@
             <input id="file-picker" type="file" name="file" accept="image/*" multiple>
             <div id="msg"></div>
 
-            <input class="btn btn-primary" type="submit" value="Upload!" id="upload-btn">
+            <input class="btn btn-primary" type="submit" value="Upload!" id="upload-btn" disabled="true">
         </form>
     </div>
 </body>
+
+
 
 </html>
