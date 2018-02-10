@@ -13,23 +13,20 @@
 
     <!--stylesheets and scripts-->
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
 <body class="bg">
-    <header>
         <div class="container page-title"><h1>Instagram Caption Generator</h1></div>
-    </header>
     
     <div class="container" id="upload-btn-row">
 	<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
 	<input id="file-picker" type="file" name="file" accept="image/*" multiple>
     <div id="msg"></div>
     <input type="submit" value="Upload!" id="upload-button">
-	</form>
-    </div>
-    
+	</div>
 </body>
 
 </html>

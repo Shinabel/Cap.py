@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Instagram Caption Generator</title>
+
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,600" rel="stylesheet">
+
+    <!--stylesheets and scripts-->
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+</head>
+
+<body class="bg">
+    <div class="container page-title">
+        <h1>Your Caption 🐶</h1>
+    </div>
+
+    <img/>
+
+    <!-- Target -->
+    <div class="container">
+        <div class="form-group">
+            <textarea class="form-control" rows="5" id="caption">Example caption #dog #carrots #instadaily
+            </textarea>
+        </div>
+    </div>
+
+    <!-- Trigger -->
+    <div class="container btn-row">
+        <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
+            Copy
+        </button>
+        <button class="btn btn-outline-light" id="regenerate-btn">
+            Regenerate
+        </button>
+    </div>
+
+    <script>
+        (function () {
+            new Clipboard('#copy-caption');
+        })();
+    </script>
+</body>
+
+</html>
