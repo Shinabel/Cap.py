@@ -14,7 +14,7 @@ def index():
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    target = os.path.join(APP_ROOT, 'images/')
+    target = os.path.join(APP_ROOT, 'images')
     print(target)
 
     if not os.path.isdir(target):
