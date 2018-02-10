@@ -23,7 +23,11 @@
     </header>
     
     <div class="container" id="upload-btn-row">
-        <button type="button" class="btn btn-outline-light btn-lg" id="upload-btn">Upload a photo</button>
+	<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+	<input id="file-picker" type="file" name="file" accept="image/*" multiple>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button">
+	</form>
     </div>
     
 </body>
