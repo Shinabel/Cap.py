@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -26,17 +25,19 @@ def upload():
         destination = "/".join([target, filename])
         print(destination)
         file.save(destination)
+        googlecloud(destination)
 
     return render_template("caption.html")
 
-vision_client = vision.Client()
-file_name = filename
+def googlecloud(destination):
+    vision_client = vision.Client()
+    file_name = destination
 
-with io.open(file_name, 'rb') as image_file:
-    content = image_file.read()
-    image = vision_client.image(
+    with io.open(file_name, 'rb') as image_file:
+        content = image_file.read()
+        image = vision_client.image(
         content=content, )
 
-labels = image.detect_labels()
-for label in labels:
-    print(label.description)
+    labels = image.detect_labels()
+    for label in labels:
+        print(label.description)
