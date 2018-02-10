@@ -10,4 +10,5 @@ Set Credentials:
 Install Google Cloud:
 > sudo pip install google-cloud==0.27  
 
-
+Install BeatifulSoup 4:
+> sudo pip install bs4
