@@ -11,6 +11,7 @@ from pprint import pprint
 from bs4 import BeautifulSoup
 from google.cloud import vision
 from flask import Flask, request, render_template, send_from_directory
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def upload():
         return 'No selected file'
 
     file = request.files.getlist("file")[0]
-    filename = file.filename
+    filename = secure_filename(file.filename)
     destination = "/".join([target, filename])
     file.save(destination)
 
