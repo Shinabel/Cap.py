@@ -36,8 +36,14 @@ with io.open(file_name, 'rb') as image_file:
     content = image_file.read()
     image = vision_client.image(
         content=content, )
+<<<<<<< HEAD
 
 labels = image.detect_labels()
 for label in labels:
     print(label.description)
+=======
+>>>>>>> 56270527364a31884bbc281497ee620f4df5ca77
 
+labels = image.detect_labels()
+for label in labels:
+    print(label.description)
