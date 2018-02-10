@@ -1,5 +1,7 @@
 import os
 import io
+import requests
+from bs4 import BeautifulSoup
 from google.cloud import vision
 from flask import Flask, request, render_template, send_from_directory
 
@@ -13,9 +15,9 @@ def index():
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    target = os.path.join(APP_ROOT, 'images')
+    target = os.path.join(APP_ROOT, 'static')
     print(target)
-
+    filename = ""
     if not os.path.isdir(target):
         os.mkdir(target)
 
@@ -25,9 +27,11 @@ def upload():
         destination = "/".join([target, filename])
         print(destination)
         file.save(destination)
-        googlecloud(destination)
-
-    return render_template("caption.html")
+    labels = googlecloud(destination)
+    quotes = []
+    for label in labels:
+        quotes.extend(getQuotes(label.description)[:3])
+    return render_template("caption.html", quotes = quotes, image = filename)
 
 def googlecloud(destination):
     vision_client = vision.Client()
@@ -41,3 +45,17 @@ def googlecloud(destination):
     labels = image.detect_labels()
     for label in labels:
         print(label.description)
+    return labels
+
+def getQuotes(keyword):
+    quoteArray = []
+
+    base_url = "http://www.brainyquote.com/quotes/keywords/"
+    url = base_url + keyword + ".html"
+    response_data = requests.get(url).text[:]
+    soup = BeautifulSoup(response_data, 'html.parser')
+    
+    for item in soup.find_all("a", class_="b-qt"):
+        quoteArray.append(item.get_text().rstrip())
+
+    return quoteArray

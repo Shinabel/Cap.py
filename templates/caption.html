@@ -19,6 +19,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 
+    <script>
+    var quotesArray = [];
+    {% for quote in quotes %}
+        quotesArray.push("{{ quote|safe }}")
+    {% endfor %}
+    
+    function getRandomCaption() {
+        document.getElementById("caption").innerHTML = quotesArray[Math.floor(Math.random()*quotesArray.length)];
+    }
+    
+    </script>
+
 </head>
 
 <body class="bg">
@@ -31,6 +43,7 @@
     <!-- Target -->
     <div class="container">
         <div class="form-group">
+            <img src="{{url_for('static', filename=image)}}">
             <textarea class="form-control" rows="5" id="caption">Example caption #dog #carrots #instadaily
             </textarea>
         </div>
@@ -41,7 +54,7 @@
         <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
             Copy
         </button>
-        <button class="btn btn-outline-light" id="regenerate-btn">
+        <button class="btn btn-outline-light" id="regenerate-btn" onclick="getRandomCaption()">
             Regenerate
         </button>
     </div>
