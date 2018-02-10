@@ -1,5 +1,6 @@
 import os
 import io
+import base64
 #
 import requests
 import time
@@ -35,10 +36,8 @@ def upload():
         return 'No selected file'
 
     file = request.files.getlist("file")[0]
-    print(file)
     filename = file.filename
     destination = "/".join([target, filename])
-    print(destination)
     file.save(destination)
 
     labels = googlecloud(destination)
@@ -48,7 +47,11 @@ def upload():
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
-    return render_template("caption.html", quotes = quotes, image = filename)
+    encoded_string = ""
+    with open(destination, "rb") as image_file:
+    	encoded_string = base64.b64encode(image_file.read())
+    os.remove(destination)
+    return render_template("caption.html", quotes = quotes, image = encoded_string)
 
 def googlecloud(destination):
     vision_client = vision.Client()
