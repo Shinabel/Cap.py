@@ -27,15 +27,20 @@ def upload():
     target = os.path.join(APP_ROOT, 'static')
     print(target)
     filename = ""
+    destination = ""
     if not os.path.isdir(target):
         os.mkdir(target)
 
-    for file in request.files.getlist("file"):
-        print(file)
-        filename = file.filename
-        destination = "/".join([target, filename])
-        print(destination)
-        file.save(destination)
+    if not request.files.get('file', None):
+        return 'No selected file'
+
+    file = request.files.getlist("file")[0]
+    print(file)
+    filename = file.filename
+    destination = "/".join([target, filename])
+    print(destination)
+    file.save(destination)
+
     labels = googlecloud(destination)
     #######
     memeSearch(labels[0].description)
@@ -43,6 +48,14 @@ def upload():
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
+    @app.after_request
+    def remove_file(response):
+        try:
+            os.remove(destination)
+            file_handle.close()
+        except Exception as error:
+            app.logger.error("Error removing or closing downloaded file handle", error)
+        return response
     return render_template("caption.html", quotes = quotes, image = filename)
 
 def googlecloud(destination):
