@@ -2,62 +2,64 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Instagram Caption Generator</title>
-
-    <!--fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,600" rel="stylesheet">
-
-    <!--stylesheets and scripts-->
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <title>cap.py</title>
+    
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow:200,400,600" rel="stylesheet">
+    
+        <!--stylesheets and scripts-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
 
     <script>
-    var quotesArray = [];
-    {% for quote in quotes %}
+        var quotesArray = [];
+        {% for quote in quotes %}
         quotesArray.push("{{ quote|safe }}")
-    {% endfor %}
-    
-    function getRandomCaption() {
-        document.getElementById("caption").innerHTML = quotesArray[Math.floor(Math.random()*quotesArray.length)];
-    }
-    
-    </script>
+        {% endfor %}
+        console.log(quotesArray[0])
+        document.getElementById("caption").innerHTML = quotesArray[0];
 
+        function getRandomCaption() {
+            document.getElementById("caption").innerHTML = quotesArray[Math.floor(Math.random() * quotesArray.length)];
+        }
+    </script>
 </head>
 
-<body class="bg">
+<body>
+
     <div class="container page-title">
-        <h1>Your Caption 🐶</h1>
+        <h1>[cap.py]</h1>
     </div>
 
     <img/>
 
     <!-- Target -->
     <div class="container">
-        <div class="form-group">
-            <img src="data:image/png;base64, {{ image }}"
-            class="original" height="400" width="400">
-            <textarea class="form-control" rows="5" id="caption">Example caption #dog #carrots #instadaily
-            </textarea>
-        </div>
-    </div>
+        <div class="row form-group">
+            <img src="data:image/png;base64, {{ image }}" class="col-sm-6" id="original" height="400" width="400">
+            <div class="col-sm-6">
 
-    <!-- Trigger -->
-    <div class="container btn-row">
-        <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
-            Copy
-        </button>
-        <button class="btn btn-outline-light" id="regenerate-btn" onclick="getRandomCaption()">
-            Regenerate
-        </button>
+                <h3 id="caption-heading">Your Caption</h3>
+
+                <div id="caption"></div>
+                <div class="row btn-row">
+                    <button class="btn btn-primary col-sm-6" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
+                        Copy
+                    </button>
+                    <button class="btn btn-outline-light col-sm-6" onclick="getRandomCaption()">
+                        Regenerate
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>

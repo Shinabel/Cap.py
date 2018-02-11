@@ -1,59 +1,64 @@
-body, html {
+body {
     height: 100%;
     margin: 0;
-    background-color: #33c698;
+    background-color: #f9c908;
 }
 
 body {
-    font-family: Rubik, Helvetica, sans-serif;
+    font-family: Barlow, Helvetica, sans-serif;
     color: white;
+    font-size: 18px;
 }
 
 input {
     padding-bottom: 30px;
 }
 
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+/* Header */
+
+header {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 .page-title {
-    margin-top: 100px;
     text-align: center;
 }
 
 .page-title h1 {
     color: white;
     font-family: "Patua One";
-    font-size: 4em;
+    font-size: 5em;
+    letter-spacing: 2px;
 }
 
 .page-description {
-    padding-top: 10px;
     text-align: center;
 }
 
 .page-description p {
-    font-size: 18px;
-    font-weight: 400;
+    font-family: "Patua One";
+    font-size: 1.25em;
 }
 
-/*
-.original img {
-    height: 100px;
-    width: 100px; 
-    float: left;
-    position: relative;
-    background-position: 25% 25%;
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
+/* Main */
 
-.container#upload-form {
-    margin-left: auto;
-    margin-right: auto;
+main {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color: #0fb690;
 }
 
-.btn-row {
-    display: flex;
-    justify-content: flex-start;
-}
+/* Button styles */
 
 .btn-primary,
 .btn-primary:disabled {
@@ -67,18 +72,107 @@ input {
 }
 
 .btn-outline-light:hover {
-    color: #820984;
+    color: #5b97e5;
+}
+
+/* Upload photo (index.html) */
+
+.container#upload-form {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #upload-form {
-    padding-top: 30px;
+    padding-top: 50px;
 }
 
-#upload .center-flex-container {
+#file-picker {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#file-picker + label {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#file-picker:focus + label,
+#file-picker + label:hover {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#file-picker + label,
+#upload-btn:enabled {
+	cursor: pointer; /* "hand" cursor */
+}
+
+#upload-btn {
+    margin-top: 15px;
+    display: block;
+}
+
+
+
+
+
+
+.container.subtitle h3 {
+    font-family: "Patua One";
+}
+
+.container.gif {
+    margin-top: 50px;
+}
+
+.container.gif-caption {
+    margin-top: 50px;
+}
+
+.container.gif-caption p {
+    font-weight: 600;
+}
+
+#caption-heading {
+    font-family: "Patua One";
+    text-align: left;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+
+
+img#original {
+    width: 100%;   
+}
+
+
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btn-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.center-flex-container {
     display: flex;
     justify-content: center;
 }
 
-#upload-btn {
-    display: block;
+
+
+#caption {
+    height: 300px;
 }
