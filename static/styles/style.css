@@ -37,6 +37,17 @@ input {
     font-size: 3em;
 }
 
+/*
+.original img {
+    height: 100px;
+    width: 100px; 
+    float: left;
+    position: relative;
+    background-position: 25% 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
 .btn-row {
     display: flex;
     justify-content: flex-start;
