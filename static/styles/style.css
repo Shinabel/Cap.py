@@ -31,8 +31,8 @@ a:visited {
 /* Header */
 
 header {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 15%;
+    padding-bottom: 15%;
 }
 
 .center-flex-row {
@@ -65,8 +65,8 @@ header {
 /* Main */
 
 main {
-    padding-top: 50px;
-    padding-bottom: 100px;
+    padding-top: 7%;
+    padding-bottom: 7%;
     background-color: #0fb690;
 }
 
@@ -89,7 +89,8 @@ main {
     border-color: transparent;
 }
 
-.btn:active {
+.btn-primary:active,
+.btn-secondary:active {
     outline: none;
 }
 
@@ -115,7 +116,7 @@ main {
 }
 
 #file-picker + label {
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: 700;
     color: white;
     display: inline-block;
@@ -159,8 +160,8 @@ img#original {
     letter-spacing: 1px;
 }
 
-#caption {
-    height: 200px;
+#hashtags {
+    font-weight: 600;
 }
 
 .row {
@@ -171,7 +172,7 @@ img#original {
 .btn-row {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .center-flex-container {
@@ -228,9 +229,10 @@ img#original {
 
 footer {
     background-color: #0fb690;
+    padding-bottom: 30px;
 }
 footer #footer-logo{
     display: flex;
-    flex-direction: center;
+    justify-content: center;
 }
 

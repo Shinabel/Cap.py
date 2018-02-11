@@ -36,7 +36,7 @@
 
     <header>
         <div class="container page-title">
-            <a href="#">
+            <a href="../#">
                 <h1>[cap.py]</h1>
             </a>
         </div>
@@ -49,20 +49,27 @@
     <main>
         <div class="container">
             <div class="row form-group">
-                <img src="data:image/png;base64, {{ image }}" class="col-sm-6" id="original" height="400" width="400">
-                <div class="col-sm-6">
+                <img src="data:image/png;base64, {{ image }}" class="col-md-6" id="original" height="400" width="400">
+                <div class="col-md-6">
                     <!--<h1 id="caption-heading">Your Caption</h1>-->
-                    <div id="caption"></div>
-                    <div id="hashtags">{{ hashtags }}</div>
+                    <div id="caption-text">
+                        <div id="caption"></div>
+                        <div id="hashtags">{{ hashtags }}</div>
+                    </div>
+
                     <div class="row btn-row">
-                        <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
+                        <span>
+                            <input id="boxid" type="checkbox" checked="true">
+                            <label for="boxid">Hashtags</label>
+                        </span>
+
+                        <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption-text">
                             Copy
                         </button>
                         <button class="btn btn-secondary" onclick="getRandomCaption()">
                             Regenerate
                         </button>
                     </div>
-                    <input id="boxid" type="checkbox" checked="true"><label for="boxid">Recommend Hashtags?</label>
                 </div>
             </div>
         </div>
