@@ -6,6 +6,7 @@ After uploading, your image will be paired with one of the generated captions. I
 
 ### Instructions to run the app
 > export FLASK_APP="main.py"
+
 > flask run
 
 ### If you run into errors:
