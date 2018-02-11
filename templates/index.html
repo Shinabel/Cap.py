@@ -10,8 +10,7 @@
 
     <!--fonts-->
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:200,400,600" rel="stylesheet">
 
     <!--stylesheets and scripts-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -34,24 +33,29 @@
 </head>
 
 <body>
-    <div class="container page-title">
-        <h1>cap.py</h1>
-    </div>
+    <header>
+        <div class="container page-title">
+            <a href="#">
+                <h1>[cap.py]</h1>
+            </a>
+        </div>
+        <div class="container page-description">
+            <p>a photo caption generator</p>
+        </div>
+    </header>
 
-    <div class="container page-description">
-        <p>a photo caption generator</p>
-    </div>
-
-    <div class="container" id="upload">
-        <form id="upload-form" action="{{ url_for('loading') }}" method="POST" enctype="multipart/form-data">
-            <div class="center-flex-container">
-                <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-            </div>
-            <div class="center-flex-container">
-                <input class="btn btn-primary" id="upload-btn" type="submit" value="Upload" disabled="true">
-            </div>
-        </form>
-    </div>
+    <main>
+        <div class="container" id="upload-container">
+            <form id="upload-form" action="{{ url_for('loading') }}" method="POST" enctype="multipart/form-data">
+                <div class="center-flex-container">
+                    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+                    <label for="file-picker">Choose a file</label>
+                </div>
+                <div class="center-flex-container">
+                    <input class="btn btn-lg btn-primary" id="upload-btn" type="submit" value="Upload" disabled="true">
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
-
 </html>
