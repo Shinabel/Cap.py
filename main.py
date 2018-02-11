@@ -1,6 +1,7 @@
 import os
 import io
 import base64
+import emoji
 #
 import requests
 import time
@@ -45,12 +46,15 @@ def upload():
     #######
     memeSearch(labels[0].description)
     #######
+    for label in labels:
+        getEmoji(labels[0].description)
+
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
     encoded_string = ""
     with open(destination, "rb") as image_file:
-    	encoded_string = base64.b64encode(image_file.read())
+        encoded_string = base64.b64encode(image_file.read())
     os.remove(destination)
     return render_template("caption.html", quotes = quotes, image = encoded_string)
 
@@ -64,8 +68,8 @@ def googlecloud(destination):
         content=content, )
 
     labels = image.detect_labels()
-    for label in labels:
-        print(label.description)
+    #for label in labels:
+    #    print(label.description)
     return labels
 
 def getQuotes(keyword):
@@ -91,3 +95,10 @@ def memeSearch(text):
         print(api_response.data[0].embed_url)
     except ApiException as e:
         print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)
+
+
+def getEmoji(text):
+    words = text.split()
+    for word in words:
+        print emoji.emojize(':'+word+':')
+    #return emoji.emojize(':'+words+':')
