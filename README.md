@@ -5,10 +5,10 @@ Start by choosing the picture you want to capture.
 After uploading, your image will be paired with one of the generated captions. If you think that the first one doesn't fit your needs, you can regenerate another caption.
 
 ### Instructions to run the app
-> export FLASK_APP="main.py"
-
-> flask run
-
+```
+export FLASK_APP="main.py"
+flask run
+```
 ### If you run into errors:
 Set Credentials:
 > export GOOGLE_APPLICATION_CREDENTIALS=apikey.json  
