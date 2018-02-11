@@ -1,3 +1,7 @@
+html {
+    background-color: #0fb690;
+}
+
 body {
     height: 100%;
     margin: 0;
@@ -8,6 +12,7 @@ body {
     font-family: Barlow, Helvetica, sans-serif;
     color: white;
     font-size: 18px;
+    font-weight: 200;
 }
 
 input {
@@ -30,6 +35,12 @@ header {
     padding-bottom: 100px;
 }
 
+.center-flex-row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .page-title {
     text-align: center;
 }
@@ -44,6 +55,7 @@ header {
 .page-description {
     text-align: center;
 }
+
 
 .page-description p {
     font-family: "Patua One";
@@ -75,6 +87,10 @@ main {
 .btn-secondary {
     background-color: #f9c908;
     border-color: transparent;
+}
+
+.btn:active {
+    outline: none;
 }
 
 
@@ -163,17 +179,23 @@ img#original {
     justify-content: center;
 }
 
+/* Loading page */
+
 .loading p {
-    font-family: "Patua One";
-    font-size: 2em
+    font-family: Barlow;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .loading p:after {
     overflow: hidden;
     display: inline-block;
     vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
-    animation: ellipsis steps(4,end) 900ms infinite;
+    -webkit-animation: ellipsis steps(4,end) 1000ms infinite;      
+    animation: ellipsis steps(4,end) 1000ms infinite;
     content: "\2026"; /* ascii code for the ellipsis character */
     width: 0px;
   }
@@ -190,8 +212,6 @@ img#original {
     }
 }
 
-
-
 .container.gif {
     margin-top: 50px;
 }
@@ -201,8 +221,16 @@ img#original {
 }
 
 .container.gif-caption p {
-    font-weight: 600;
+    font-size: 1.25em;
 }
 
+/* Footer */
 
+footer {
+    background-color: #0fb690;
+}
+footer #footer-logo{
+    display: flex;
+    flex-direction: center;
+}
 
