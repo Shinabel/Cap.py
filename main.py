@@ -49,8 +49,8 @@ def loading():
     memeLink = memeSearch(labels[0].description) + "/200.gif"
     memeLink = memeLink.replace("embed", "media")
     memeLink = memeLink.replace("https://", "https://media2.")
-    print memeLink
-    #######
+    print (memeLink)
+    ######
     return render_template("loading.html", gif_link = memeLink, labels = stringLabels, image_destination = destination)
 
 @app.route("/upload", methods=['POST'])
