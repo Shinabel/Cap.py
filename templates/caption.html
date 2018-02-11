@@ -53,6 +53,7 @@
                 <div class="col-sm-6">
                     <!--<h1 id="caption-heading">Your Caption</h1>-->
                     <div id="caption"></div>
+                    <div id="hashtags">{{ hashtags }}</div>
                     <div class="row btn-row">
                         <button class="btn btn-primary" id="copy-caption" data-clipboard-action="copy" data-clipboard-target="#caption">
                             Copy
@@ -61,6 +62,7 @@
                             Regenerate
                         </button>
                     </div>
+                    <input id="boxid" type="checkbox" checked="true"><label for="boxid">Recommend Hashtags?</label>
                 </div>
             </div>
         </div>
@@ -72,7 +74,18 @@
         })();
         window.onload = function () {
             document.getElementById("caption").innerHTML = quotesArray[0];
+            var checkbox = document.getElementById("boxid");
+            checkbox.addEventListener("change", handleHashtags, false);
         };
+        function handleHashtags() {
+            var isChecked = document.getElementById("boxid").checked;
+            if (isChecked) {
+                document.getElementById("hashtags").innerHTML = "{{ hashtags }}";
+            }
+            else {
+                document.getElementById("hashtags").innerHTML = '';
+            }
+        }
     </script>
 </body>
 

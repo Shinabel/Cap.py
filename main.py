@@ -44,7 +44,7 @@ def loading():
     labels = googlecloud(destination)
     stringLabels = ""
     for label in labels:
-        stringLabels += label.description + " "
+        stringLabels += label.description + ", "
     #######
     memeLink = memeSearch(labels[0].description) + "/200.gif"
     memeLink = memeLink.replace("embed", "media")
@@ -57,15 +57,19 @@ def loading():
 def upload():
     destination = request.form['destination']
     stringlabels = request.form['labels']
-    labels = stringlabels.split()
+    labels = stringlabels.split(", ")
+    labels = labels[:-1]
     quotes = []
+    hashtags = ""
     for label in labels:
         quotes.extend(getQuotes(label)[:3])
+        hashtags += "#" + label.replace(" ", '') + " "
+
     encoded_string = ""
     with open(destination, "rb") as image_file:
     	encoded_string = base64.b64encode(image_file.read())
     os.remove(destination)
-    return render_template("caption.html", quotes = quotes, image = encoded_string)
+    return render_template("caption.html", quotes = quotes, image = encoded_string, hashtags = hashtags)
 
 def googlecloud(destination):
     vision_client = vision.Client()
