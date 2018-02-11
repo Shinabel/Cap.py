@@ -2,6 +2,7 @@ import os
 import io
 import base64
 import emoji
+import unicodedata
 #
 import requests
 import time
@@ -46,12 +47,21 @@ def upload():
     #######
     memeSearch(labels[0].description)
     #######
-    for i in range(3):
-        getEmoji(labels[i].description)
 
+    # create a list of emojis 
+    emojis = []
+    for i in range(3):
+        e = getEmoji(labels[i].description)
+        string_emoji = repr(e)
+        emojis.append(string_emoji)
+    print (emojis)
     quotes = []
     for label in labels:
         quotes.extend(getQuotes(label.description)[:3])
+
+    for quote in quotes:
+        quote + emojis
+
     encoded_string = ""
     with open(destination, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
@@ -92,13 +102,13 @@ def memeSearch(text):
     try: 
     # Search Endpoint
         api_response = api_instance.gifs_search_get(api_key, key, limit=limit)
-        print(api_response.data[0].embed_url)
+        #print(api_response.data[0].embed_url)
     except ApiException as e:
         print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)
 
 
 def getEmoji(text):
-    words = text.split()
-    for word in words:
-        print emoji.emojize(':'+word+':')
-    #return emoji.emojize(':'+words+':')
+    #words = text.split()
+    #for word in words:
+        #print emoji.emojize(':'+word+':')
+    return emoji.emojize(':'+text+':')
