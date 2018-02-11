@@ -10,41 +10,51 @@
 
     <!--fonts-->
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Barlow:200,300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:200,400,600" rel="stylesheet">
 
     <!--stylesheets and scripts-->
-
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
-<body class="bg">
+<body>
 
-    <div class="container page-title">
-        <h1>[cap.py]</h1>
-    </div>
+    <header>
+        <div class="container page-title">
+            <a href="../">
+                <h1>[cap.py]</h1>
+            </a>
+        </div>
+        <div class="container page-description">
+            <p>a photo caption generator</p>
+        </div>
+    </header>
 
-    <div class="container subtitle center-flex-container">
-        <h3>generating your caption...</h3>
-    </div>
+    <main>
 
-    <div class="container center-flex-container gif">
-        <img src="{{ gif_link }}">
-    </div>
+        <div class="container center-flex-container loading">
+            <p>generating your caption...</p>
+        </div>
 
-    <div class="container center-flex-container gif-caption">
-        <p>
-            <em>please enjoy this gif while you wait.</em>
-        </p>
-    </div>
+        <div class="container center-flex-container gif">
+            <img src="{{ gif_link }}">
+        </div>
 
-    <div class="container">
-        <form name="autoForm" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-            <input id="destination" type="hidden" name="destination" value="{{ image_destination }}">
-            <input id="labels" type="hidden" name="labels" value="{{ labels }}">
-        </form>
-    </div>
+        <div class="container center-flex-container gif-caption">
+            <p>
+                <em>please enjoy this gif while you wait.</em>
+            </p>
+        </div>
+
+        <div class="container">
+            <form name="autoForm" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                <input id="destination" type="hidden" name="destination" value="{{ image_destination }}">
+                <input id="labels" type="hidden" name="labels" value="{{ labels }}">
+            </form>
+        </div>
+    </main>
 </body>
 
 <script>

@@ -28,6 +28,14 @@
                         }
                     }
                 );
+
+                $('input[type="file"]').change(function () {
+                    if ($(this).val()) {
+                        var filename = $(this).val().replace(/^.*[\\\/]/, '');
+                        $(this).closest('#upload-form').find('#file-name').html(filename);
+                    }
+                });
+
             });
     </script>
 </head>
@@ -50,6 +58,7 @@
                 <div class="center-flex-container">
                     <input id="file-picker" type="file" name="file" accept="image/*" multiple>
                     <label for="file-picker">Choose a file</label>
+                    <span id="file-name"></span>
                 </div>
                 <div class="center-flex-container">
                     <input class="btn btn-lg btn-primary" id="upload-btn" type="submit" value="Upload" disabled="true">
@@ -58,4 +67,5 @@
         </div>
     </main>
 </body>
+
 </html>
