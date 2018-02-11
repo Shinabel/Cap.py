@@ -1,40 +1,37 @@
 body, html {
     height: 100%;
     margin: 0;
+    background-color: #33c698;
 }
 
 body {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: Rubik, Helvetica, sans-serif;
     color: white;
-    font-weight: 200;
 }
 
 input {
     padding-bottom: 30px;
 }
 
-.bg {
-    /* The image used */
-    background-image: url("/static/img/bg.jpg");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .page-title {
     margin-top: 100px;
-    text-align: left;
+    text-align: center;
 }
 
 .page-title h1 {
     color: white;
+    font-family: "Patua One";
+    font-size: 4em;
+}
+
+.page-description {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.page-description p {
+    font-size: 18px;
     font-weight: 400;
-    font-size: 3em;
 }
 
 /*
@@ -48,19 +45,25 @@ input {
     background-size: cover;
 }*/
 
+.container#upload-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .btn-row {
     display: flex;
     justify-content: flex-start;
 }
 
-.btn-primary {
-    background-color: #820984;
-    border-color: #820984;
+.btn-primary,
+.btn-primary:disabled {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: transparent;
 }
 
-.btn-primary:hover {
-    background-color: #4d034f;
-    border-color: #4d034f;
+.btn-primary:hover:enabled {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
 }
 
 .btn-outline-light:hover {
@@ -69,4 +72,13 @@ input {
 
 #upload-form {
     padding-top: 30px;
+}
+
+#upload .center-flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+#upload-btn {
+    display: block;
 }

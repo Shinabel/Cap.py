@@ -6,48 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Instagram Caption Generator</title>
+    <title>cap.py</title>
 
     <!--fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
 
     <!--stylesheets and scripts-->
-
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
-    $(document).ready(
-        function() {
-            $("input:file").change(
-                function() {
-                    if ($(this).val()) {
-                        $('input:submit').removeAttr('disabled');
+        $(document).ready(
+            function () {
+                $("input:file").change(
+                    function () {
+                        if ($(this).val()) {
+                            $('input:submit').removeAttr('disabled');
+                        }
                     }
-                }
                 );
-        });
+            });
     </script>
-    
 </head>
 
-<body class="bg">
+<body>
     <div class="container page-title">
-        <h1>Instagram Caption Generator</h1>
+        <h1>cap.py</h1>
     </div>
 
-    <div class="container">
-        <form id="upload-form" action="{{ url_for('loading') }}" method="POST" enctype="multipart/form-data">
-            <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-            <div id="msg"></div>
+    <div class="container page-description">
+        <p>a photo caption generator</p>
+    </div>
 
-            <input class="btn btn-primary" type="submit" value="Upload!" id="upload-btn" disabled="true">
+    <div class="container" id="upload">
+        <form id="upload-form" action="{{ url_for('loading') }}" method="POST" enctype="multipart/form-data">
+            <div class="center-flex-container">
+                <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+            </div>
+            <div class="center-flex-container">
+                <input class="btn btn-primary" id="upload-btn" type="submit" value="Upload" disabled="true">
+            </div>
         </form>
     </div>
 </body>
-
-
 
 </html>
