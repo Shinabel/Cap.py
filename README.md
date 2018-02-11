@@ -6,6 +6,7 @@ After uploading, your image will be paired with one of the generated captions. I
 
 ### Instructions to run the app
 ```
+virtualenv --no-site-packages --distribute .venv && source .venv/bin/activate && pip install -r requirements.txt
 export FLASK_APP="main.py"
 flask run
 ```
