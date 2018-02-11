@@ -24,8 +24,8 @@ api_key = 'dc6zaTOxFJmzC'
 def index():
     return render_template("index.html")
 
-@app.route("/upload", methods=['POST'])
-def upload():
+@app.route("/loading", methods=['POST'])
+def loading():
     target = os.path.join(APP_ROOT, 'static')
     print(target)
     filename = ""
@@ -42,12 +42,25 @@ def upload():
     file.save(destination)
 
     labels = googlecloud(destination)
+    stringLabels = ""
+    for label in labels:
+        stringLabels += label.description + " "
     #######
-    memeSearch(labels[0].description)
+    memeLink = memeSearch(labels[0].description) + "/200.gif"
+    memeLink = memeLink.replace("embed", "media")
+    memeLink = memeLink.replace("https://", "https://media2.")
+    print memeLink
     #######
+    return render_template("loading.html", gif_link = memeLink, labels = stringLabels, image_destination = destination)
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    destination = request.form['destination']
+    stringlabels = request.form['labels']
+    labels = stringlabels.split()
     quotes = []
     for label in labels:
-        quotes.extend(getQuotes(label.description)[:3])
+        quotes.extend(getQuotes(label)[:3])
     encoded_string = ""
     with open(destination, "rb") as image_file:
     	encoded_string = base64.b64encode(image_file.read())
@@ -88,6 +101,7 @@ def memeSearch(text):
     try: 
     # Search Endpoint
         api_response = api_instance.gifs_search_get(api_key, key, limit=limit)
-        print(api_response.data[0].embed_url)
+        print api_response.data[0].embed_url
+        return api_response.data[0].embed_url
     except ApiException as e:
         print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)

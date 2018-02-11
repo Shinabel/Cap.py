@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Loading</title>
+
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,600" rel="stylesheet">
+
+    <!--stylesheets and scripts-->
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="bg">
+    <div class="container page-title">
+        <h1>Generating Captions</h1>
+    </div>
+    <img src="{{ gif_link }}">
+    <div class="container">
+        <form name="autoForm" id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input id="destination" type="hidden" name="destination" value="{{ image_destination }}">
+            <input id="labels" type="hidden" name="labels" value="{{ labels }}">
+        </form>
+    </div>
+</body>
+
+    <script>
+    window.onload = function() {
+        document.forms["autoForm"].submit();
+    }
+    </script>
+</html>
