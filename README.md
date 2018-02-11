@@ -1,11 +1,11 @@
-# cap.py
+# [cap.py](http://cappy.pythonanywhere.com/)
 
 Uploading a photo to your favorite social media platform is always a struggle when you can't think of the perfect caption. With cap.py, never worry again that your caption is holding back your image from getting the attention it deserves. 
 
 Start by choosing the picture you want to caption. 
 After uploading, your image will be paired with one of the generated captions. If you think that the first one doesn't fit your needs, you can regenerate another caption.
 
-**View a live demo [here](http://cappy.pythonanywhere.com/)!**
+## View a live demo [here](http://cappy.pythonanywhere.com/)!
 
 ### Instructions to run the app locally
 ```
