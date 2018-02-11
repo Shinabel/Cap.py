@@ -20,7 +20,7 @@ Set Credentials:
 Install required :
 > sudo pip install google-cloud==0.27  
 
-Install BeatifulSoup:
+Install BeautifulSoup:
 > sudo pip install bs4
 
 Install Giphy:
