@@ -46,8 +46,8 @@ def upload():
     #######
     memeSearch(labels[0].description)
     #######
-    for label in labels:
-        getEmoji(labels[0].description)
+    for i in range(3):
+        getEmoji(labels[i].description)
 
     quotes = []
     for label in labels:
