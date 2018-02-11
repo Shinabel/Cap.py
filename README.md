@@ -26,4 +26,9 @@ Install BeautifulSoup:
 Install Giphy:
 > sudo pip install giphy_client
 
-_Written by Abel and the Kids_
+#### Contributors
+Team Manager: [Brandon Yip](https://github.com/brandondyip)  
+Front-end: [Caitlin Wang](https://github.com/ctlnwng) , [Duk Hwan Kim](https://github.com/DukHKim)    
+Back-end: [Abel Shin](https://github.com/Shinabel), [Elizabeth Cho](https://github.com/cho-e)  
+Full-stack:[Daniel Chen](https://github.com/chen-daniel)   
+Icon Logo: [Abby Ko](https://github.com/AbbyKo)    
