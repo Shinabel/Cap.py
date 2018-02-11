@@ -48,19 +48,19 @@ def upload():
     memeSearch(labels[0].description)
     #######
 
-    # create a list of emojis 
-    emojis = []
+    # create a BIG STRING of emojis 
+    emojis = ""
     for i in range(3):
         e = getEmoji(labels[i].description)
-        string_emoji = repr(e)
-        emojis.append(string_emoji)
+        emojis += e
+
     print (emojis)
     quotes = []
-    for label in labels:
-        quotes.extend(getQuotes(label.description)[:3])
 
-    for quote in quotes:
-        quote + emojis
+    for i in range(3):
+        quote = getQuotes(labels[i].description)
+        quote += emojis
+        quotes.extend(quote)
 
     encoded_string = ""
     with open(destination, "rb") as image_file:
