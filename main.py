@@ -108,4 +108,4 @@ def memeSearch(text):
         print api_response.data[0].embed_url
         return api_response.data[0].embed_url
     except ApiException as e:
-        print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)
+        print("Exception when calling gifs_search_get: %s\n" % e)
