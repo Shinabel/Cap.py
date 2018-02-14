@@ -30,7 +30,7 @@ Install Giphy:
 Team Manager: [Brandon Yip](https://github.com/brandondyip)  
 Front-end: [Caitlin Wang](https://github.com/ctlnwng)  
 Back-end: [Abel Shin](https://github.com/Shinabel), [Elizabeth Cho](https://github.com/cho-e)  
-Full-stack:[Daniel Chen](https://github.com/chen-daniel)   
+Full-stack: [Daniel Chen](https://github.com/chen-daniel)   
 Logo: [Abby Ko](https://github.com/AbbyKo)    
 
 

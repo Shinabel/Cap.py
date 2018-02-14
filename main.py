@@ -50,6 +50,7 @@ def loading():
     destination = "/".join([target, filename])
     file.save(destination)
 
+    #convert the list of key words into simple long text.
     labels = googlecloud(destination)
     stringLabels = ""
     for label in labels:
@@ -96,11 +97,13 @@ def googlecloud(destination):
     vision_client = vision.Client()
     file_name = destination
 
+    #open the file image and use Google Cloud Vision to get its content
     with io.open(file_name, 'rb') as image_file:
         content = image_file.read()
         image = vision_client.image(
         content=content, )
 
+    #key words obtained
     labels = image.detect_labels()
 
     #for label in labels:
