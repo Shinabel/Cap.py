@@ -83,6 +83,7 @@
             document.getElementById("caption").innerHTML = quotesArray[0];
             var checkbox = document.getElementById("boxid");
             checkbox.addEventListener("change", handleHashtags, false);
+            getRandomCaption();
         };
         function handleHashtags() {
             var isChecked = document.getElementById("boxid").checked;
